@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ubuntu&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Weather forecast</title>
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+        </div>
+        <div class="panel panel2">
+        </div>
+        <div class="panel panel3">
+        </div>
+        <div class="panel panel4">
+        </div>
+        <div class="panel panel5">
+        </div>
+    </div>
+    <div id="app" class="weather__containter">
+        <div v-for="(result, index) in results">
+            <h2 class="weather__header">Location: <span class="underline--magical">{{ result.name }} ({{ result.sys.country }})</span></h2>
+            <div class="weather__basic">
+                <h3>Basic data:</h3>
+                <div><img :src=icon> {{ result.desc }}</div>
+                <div>Current temperature: {{ result.main.temp }}°C</div>
+                <div>Feeling temperature: {{ result.main.feels_like }}°C</div>
+                <div>Min temperature {{ result.main.temp_min }}°C</div>
+                <div>Max temperature {{ result.main.temp_max }}°C</div>
+            </div>
+            <div class="weather__extra">
+                <h3>Extra info:</h3>
+                <span>Humidity: {{ result.main.humidity }}%</span>
+                <span>Pressure: {{ result.main.pressure }}hPa</span>
+                <span>Wind: {{ result.wind.speed }}km/h</span>
+            </div>
+        </div>
+        <span class="weather__random">Random value to check if reload: {{ random }}</span>
+        <div v-if="errorStr">{{ errorStr }}</div>
+        <div v-if="loading" class="weather__loader">
+            <img src="../img/loader3.gif" alt="loading..."><p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../src/main.js"></script>
+    <script src="../src/animation.js"></script>
+
+</body>
+
+</html>

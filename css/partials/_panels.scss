@@ -1,0 +1,40 @@
+.panels {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+.panel {
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, .1);
+    color: white;
+    text-align: center;
+    align-items: center;
+    flex: 1;
+    transition:
+        flex 0.7s cubic-bezier(.61, -.19, .7, -.11),
+        background 0.2s;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    &1 {
+        background-image: url('../img/bg1.jpg');
+    }
+    &2 {
+        background-image: url('../img/bg2.jpg');
+    }
+    &3 {
+        background-image: url('../img/bg3.jpg');
+    }
+    &4 {
+        background-image: url('../img/bg4.jpg');
+    }
+    &5 {
+        background-image: url('../img/bg5.jpg');
+    }
+    &.open {
+        flex: 3;
+    }
+}
